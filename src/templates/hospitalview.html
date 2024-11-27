@@ -1,0 +1,61 @@
+{% extends 'Admin.html' %}
+{% block body %}
+
+    <a href="/addhospital" class="btn btn-primary mb-3">Add New</a>
+    <div class="container mt-3">
+        <div class="row">
+            {% for i in value %}
+                <div class="col-md-12 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- Hospital Name -->
+                                <div class="col-md-2">
+                                    <div class="fw-bold">Hospital Name</div>
+                                    {{ i[1] }}
+                                </div>
+
+                                <!-- Place -->
+                                <div class="col-md-2">
+                                    <div class="fw-bold">Place</div>
+                                    {{ i[2] }}
+                                </div>
+
+                                <!-- Phone Number -->
+                                <div class="col-md-2">
+                                    <div class="fw-bold">Phone Number</div>
+                                    {{ i[3] }}
+                                </div>
+
+                                <!-- Latitude -->
+                                <div class="col-md-2">
+                                    <div class="fw-bold">Latitude</div>
+                                    {{ i[4] }}
+                                </div>
+
+                                <!-- Longitude -->
+                                <div class="col-md-2">
+                                    <div class="fw-bold">Longitude</div>
+                                    {{ i[5] }}
+                                </div>
+
+                                <!-- Image -->
+                                <div class="col-md-2">
+                                    <div class="fw-bold">Image</div>
+                                    <img src="static/images/{{ i[6] }}" width="50" height="50">
+                                </div>
+
+                                <!-- Action Buttons on the same row -->
+                                <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                    <a href="edithospital?id={{ i[0] }}" class="btn btn-primary me-2">Edit</a>
+                                    <a href="deleletehospital?id={{ i[0] }}" class="btn btn-danger">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'Admin.html' %}
+{% block body %}
+
+    <a href="/addpolice" class="btn btn-primary">Add New </a>
+    <div class="container mt-3">
+        <div class="row">
+            {% for i in value %}
+                <div class="col-md-12 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Police Station Name -->
+                            <div class="row mb-2">
+                                <div class="col-md-3 fw-bold">Police Station Name</div>
+                                <div class="col-md-9">{{ i[1] }}</div>
+                            </div>
+
+                            <!-- Place -->
+                            <div class="row mb-2">
+                                <div class="col-md-3 fw-bold">Place</div>
+                                <div class="col-md-9">{{ i[2] }}</div>
+                            </div>
+
+                            <!-- Phone Number -->
+                            <div class="row mb-2">
+                                <div class="col-md-3 fw-bold">Phone Number</div>
+                                <div class="col-md-9">{{ i[3] }}</div>
+                            </div>
+
+                            <!-- Latitude -->
+                            <div class="row mb-2">
+                                <div class="col-md-3 fw-bold">Latitude</div>
+                                <div class="col-md-9">{{ i[4] }}</div>
+                            </div>
+
+                            <!-- Longitude -->
+                            <div class="row mb-2">
+                                <div class="col-md-3 fw-bold">Longitude</div>
+                                <div class="col-md-9">{{ i[5] }}</div>
+                            </div>
+
+                            <!-- Station Id -->
+                            <div class="row mb-2">
+                                <div class="col-md-3 fw-bold">Station Id</div>
+                                <div class="col-md-9">{{ i[6] }}</div>
+                            </div>
+
+                            <!-- Action buttons -->
+                            <div class="row">
+                                <div class="col-md-3 fw-bold">Action</div>
+                                <div class="col-md-9">
+                                    <a href="editpolice?id={{ i[0] }}" class="btn btn-primary">Edit</a>
+                                    <a href="deletepolice?id={{ i[0] }}" class="btn btn-danger">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{% endblock %}
+`

@@ -1,0 +1,144 @@
+{% extends 'Admin.html' %}
+
+{% block body %}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Complaint Management</title>
+<style>
+       body {
+        font-family: Arial, sans-serif;
+        background-color: #f3f3f3;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 20px auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        overflow: hidden;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        padding: 20px 0;
+        background-color:  #0087bd;
+        color: #fff;
+        margin: 0;
+        border-radius: 8px 8px 0 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    th {
+        background-color:  #0087bd;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .btn {
+        display: inline-block;
+        background-color: #00c04b;
+        color: white;
+        padding: 8px 8px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 5px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    .actions {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .actions a {
+        margin-right: 10px;
+    }
+    .link-button {
+        position: absolute;
+        top: 58px;
+        right: 350px; /* Adjust as needed */
+
+        background-color: #00c04b;
+        color: #333;
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 12px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+</style>
+</head>
+
+<div class="container">
+
+    <h1>Complaint Management</h1>
+
+    <div class="actions"></div>
+
+    <form id="form1" name="form1" method="post" action="">
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Complaint</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in value %}
+                <tr>
+                    <td>{{ i[1] }}</td>
+                    <td>{{ i[11] }}</td>
+                    <td>{{ i[12] }}</td>
+
+                   {% if i[13] is none %}
+    <td>Not Replied</td>
+    <td>
+        <a href="/sendreplay?id={{ i[9] }}" class="btn">REPLY</a>
+        <a href="/deletecomplaint?id={{ i[9] }}" class="btn" style="background-color: #d9534f;">DELETE</a>
+    </td>
+{% else %}
+    <td>{{ i[13] }}</td>
+    <td class="reply">
+        Replied
+        <a href="/deletecomplaints?id={{ i[9] }}" class="btn" style="background-color: #d9534f;">DELETE</a>
+    </td>
+{% endif %}
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'Admin.html' %}
+
+{% block body %}
+
+<a href="/addbus" class="btn btn-primary mb-3">Add New Bus</a>
+
+<div class="container mt-3">
+    <div class="row">
+        {% for i in values %}
+        <div class="col-md-12 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Bus Name -->
+                        <div class="col-md-2 mb-2">
+                            <strong>Bus Name</strong>
+                            <p>{{ i[1] }}</p>
+                        </div>
+
+                        <!-- Registration Number -->
+                        <div class="col-md-2 mb-2">
+                            <strong>Registration Number</strong>
+                            <p>{{ i[2] }}</p>
+                        </div>
+
+                        <!-- Owner Name -->
+                        <div class="col-md-2 mb-2">
+                            <strong>Owner Name</strong>
+                            <p>{{ i[3] }}</p>
+                        </div>
+
+                        <!-- Mobile Number -->
+                        <div class="col-md-2 mb-2">
+                            <strong>Mobile Number</strong>
+                            <p>{{ i[4] }}</p>
+                        </div>
+
+                        <!-- From -->
+                        <div class="col-md-2 mb-2">
+                            <strong>From</strong>
+                            <p>{{ i[5] }}</p>
+                        </div>
+
+                        <!-- To (Location under From) -->
+                        <div class="col-md-2 mb-2">
+                            <strong>To</strong>
+                            <p>{{ i[6] }}</p>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <!-- Departure -->
+                        <div class="col-md-2 mb-2">
+                            <strong>Departure</strong>
+                            <p>{{ i[7] }}</p>
+                        </div>
+
+                        <!-- Arrival -->
+                        <div class="col-md-2 mb-2">
+                            <strong>Arrival</strong>
+                            <p>{{ i[8] }}</p>
+                        </div>
+
+                        <!-- Facilities -->
+                        <div class="col-md-2 mb-2">
+                            <strong>Facilities</strong>
+                            <p>{{ i[12] }}</p>
+                        </div>
+
+                        <!-- Image -->
+                        <div class="col-md-2 mb-2">
+                            <strong>Image</strong><br>
+                            <img src="static/images/{{ i[11] }}" class="img-fluid" width="50" height="50">
+                        </div>
+
+                        <!-- Action (Edit/Delete) - Right side column -->
+                        <div class="col-md-2 mb-2 offset-md-2 text-right">
+                            <strong>Action</strong><br>
+                            <a href="editbus?id={{ i[13] }}" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="deletebus?id={{ i[13] }}" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
